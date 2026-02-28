@@ -23,17 +23,18 @@
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
   }
+
 </style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold fs-4 mb-3" href="/">🏡</a>
+    <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="/">
+  🏡 <span class="ms-2 mt-1">Explore</span>
+</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <b><a class="nav-link" href="/listings"><h4>Explore</h4></a></b>
-      </div>
+      <br><br>
       <div class="navbar-nav ms-auto">
         <form class="d-flex" role="search" action="/listings" method="GET">
       <input class="form-control me-2 search-inp" type="search" name="search" placeholder="Search destinations"
@@ -43,11 +44,11 @@
       </div>
       <div class="navbar-nav ms-auto">
         
-        <% if(!locals.currUser) { %>
+        <% if(!currUser) { %>
         <a class="nav-link" href="/signup"><b>Signup</b></a>
         <a class="nav-link" href="/login"><b>Log in</b></a>
         <% } %>
-        <% if(locals.currUser) { %>
+        <% if(currUser) { %>
           <a class="nav-link" href="/listings/new">Become a host</a>
         <a class="nav-link" href="/logout"><b>Logout</b></a>
         <% } %>
