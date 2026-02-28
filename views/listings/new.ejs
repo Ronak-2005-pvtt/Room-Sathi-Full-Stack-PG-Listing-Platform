@@ -1,0 +1,165 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <br />
+    <h3>Create a New Listing</h3>
+    <br />
+    <form
+      method="post"
+      action="/listings"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          name="listing[title]"
+          placeholder="Add a catchy title"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Title looks good!</div>
+        <div class="invalid-feedback">Please enter a title</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          name="listing[description]"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please enter a short description</div>
+      </div>
+
+      <div class="row">
+        <!-- Room Type -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="roomType" class="form-label">Room Type</label>
+            <select
+              class="form-select"
+              id="roomType"
+              name="listing[roomType]"
+              required
+            >
+              <option value="" disabled selected hidden>
+                Select Preference
+              </option>
+
+              <option value="Single">Single</option>
+              <option value="Double">Double</option>
+              <option value="Triple">Triple</option>
+              <option value="All are available">All are available</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Gender Preference -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="genderPreference" class="form-label"
+              >Gender Preference</label
+            >
+            <select
+              class="form-select"
+              id="genderPreference"
+              name="listing[gender]"
+              required
+            >
+              <option value="" disabled selected hidden>
+                Select Preference
+              </option>
+
+              <option value="Boys">Boys</option>
+              <option value="Girls">Girls</option>
+              <option value="Co-ed">Co-ed</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Meals Plan -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="MealPlan" class="form-label">Meal Plan</label>
+            <select
+              class="form-select"
+              id="mealPlan"
+              name="listing[MealPlan]"
+              required
+            >
+              <option value="" disabled selected hidden>
+                Select Meal Plan
+              </option>
+              <option value="Meals Included">Meals Included</option>
+              <option value="No Meals">No Meals</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Wifi -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="wifi" class="form-label">WiFi</label>
+            <select class="form-select" id="wifi" name="listing[wifi]" required>
+              <option value="" disabled selected hidden>Select Option</option>
+              <option value="Available">Available</option>
+              <option value="Not Available">Not Available</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Listing Image</label>
+        <input name="listing[image]" type="file" class="form-control" />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            name="listing[price]"
+            placeholder="1200"
+            class="form-control"
+            type="number"
+            required
+          />
+          <div class="invalid-feedback">Price should be valid</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="Country" class="form-label">Country</label>
+          <input
+            name="listing[country]"
+            placeholder="India"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Country name should be valid</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="Location" class="form-label">Location</label>
+        <input
+          name="listing[location]"
+          placeholder="Delhi,India"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Location name should be valid</div>
+      </div>
+
+      <br /><br />
+      <button class="btn btn-dark add-btn">Add</button>
+    </form>
+    <br />
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <div class="edit">
+          <br>
+     <h3>Edit your Listing</h3>
+     <br>
+     </div>
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data" novalidate class="needs-validation">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" value="<%= listing.title%>"type="text" class="form-control" required>
+            <div class="valid-feedback">Title looks good!</div>
+            <div class="invalid-feedback">Please enter a title</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" required> <%= listing.description %></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+        </div>
+
+        <div class="row">
+    <!-- Room Type -->
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="roomType" class="form-label" >Room Type</label>
+        <select class="form-select" id="roomType" name="listing[roomType]" required>
+          <option value="" disabled selected hidden>
+          Select Preference
+          <option value="Single">Single</option>
+          <option value="Double">Double</option>
+          <option value="Triple">Triple</option>
+          <option value="All are available">All are available</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Gender Preference -->
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="genderPreference" class="form-label">Gender Preference</label>
+        <select class="form-select" id="genderPreference" name="listing[gender]" required>
+          <option value="" disabled selected hidden>
+          Select Preference
+          <option value="Boys">Boys</option>
+          <option value="Girls">Girls</option>
+          <option value="Co-ed">Co-ed</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+        <!-- Meals Plan -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="MealPlan" class="form-label">Meal Plan</label>
+            <select
+              class="form-select"
+              id="mealPlan"
+              name="listing[MealPlan]"
+              required
+            >
+              <option value="" disabled selected hidden>
+                Select Meal Plan
+              </option>
+              <option value="Meals Included">Meals Included</option>
+              <option value="No Meals">No Meals</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Wifi -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="wifi" class="form-label">WiFi</label>
+            <select class="form-select" id="wifi" name="listing[wifi]" required>
+              <option value="" disabled selected hidden>Select Option</option>
+              <option value="Available">Available</option>
+              <option value="Not Available">Not Available</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Listing Image</label>
+        <input name="listing[image]" type="file" class="form-control" />
+      </div>
+
+        <div class="mb-3">
+            Orginal Lisitng Image <br>
+            <img src="<%= originalImageUrl %>" >
+        </div>
+        
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input name="listing[image]" type="file" class="form-control">
+            <div class="invalid-feedback">Please enter a valid link for image</div>
+        </div>
+        
+        <div class="row">
+        <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">price</label>
+            <input name="listing[price]" value="<%= listing.price%>" type="number" class="form-control" required>
+            <div class="invalid-feedback">Price should be valid</div>
+        </div>
+        
+        <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">country</label>
+            <input name="listing[country]" value="<%= listing.country%>" type="text" class="form-control" required>
+            <div class="invalid-feedback">Country name should be valid</div>
+        </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">location</label>
+            <input name="listing[location]" value="<%= listing.location%>" type="text" class="form-control" required>
+        </div>
+        <button class="btn btn-dark edit-btn mt-3 mb-4">Edit</button>
+    </form>
+    </div>
+    </div>
+   
