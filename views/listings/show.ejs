@@ -100,8 +100,8 @@
 
 <script>
   const mapToken = "<%= process.env.MAP_KEY %>";
-  const listingCoordinates = <%- JSON.stringify(listing.geometry && Array.isArray(listing.geometry.coordinates) && listing.geometry.coordinates.length === 2 ? listing.geometry.coordinates : [77.2090, 28.6139]) %>;
+ 
   console.log("EJS Coordinates:", listingCoordinates);
-</script>
+</script> const listingCoordinates = <%- JSON.stringify(listing.geometry && Array.isArray(listing.geometry.coordinates) && listing.geometry.coordinates.length === 2 ? listing.geometry.coordinates : [77.2090, 28.6139]) %>;
 
 <script src="/js/map.js"></script>
