@@ -24,43 +24,17 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res, next) => {
-  // try {
-  //   const { location } = req.body.listing;
-
-  //   const geoUrl = `https://api.maptiler.com/geocoding/${encodeURIComponent(location)}.json?key=${process.env.MAP_KEY}`;
-
-  //   const response = await axios.get(geoUrl);
-
-  //   if (!response.data.features || response.data.features.length === 0) {
-  //     req.flash("error", "Invalid location");
-  //     return res.redirect("/listings/new");
-  //   }
-
-  //   const coordinates = response.data.features[0].geometry.coordinates;
-
-  //   if (!coordinates || coordinates.length !== 2) {
-  //     req.flash("error", "Coordinates not found");
-  //     return res.redirect("/listings/new");
-  //   }
-
-   try {
+  try {
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
 
-    // Safe image fallback
-    if (req.file) {
-      newListing.image = {
-        url: req.file.path,
-        filename: req.file.filename,
-      };
-    } else {
-      newListing.image = {
-        url: "https://via.placeholder.com/400",
-        filename: "default",
-      };
-    }
+    // Default image (hackathon safe)
+    newListing.image = {
+      url: "https://via.placeholder.com/400",
+      filename: "default",
+    };
 
-    // Safe default coordinates (Delhi)
+    // Default coordinates (Delhi)
     newListing.geometry = {
       type: "Point",
       coordinates: [77.2090, 28.6139],
@@ -71,7 +45,6 @@ module.exports.createListing = async (req, res, next) => {
     req.flash("success", "New Listing Created!");
     res.redirect(`/listings/${newListing._id}`);
   } catch (err) {
-    console.error("CREATE LISTING ERROR:", err);
     next(err);
   }
 };
