@@ -43,12 +43,20 @@ module.exports.createListing = async (req, res, next) => {
       return res.redirect("/listings/new");
     }
 
-    let url = req.file.path;
-    let filename = req.file.filename;
-
     const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id;
-    newListing.image = { url, filename };
+newListing.owner = req.user._id;
+
+if (req.file) {
+  let url = req.file.path;
+  let filename = req.file.filename;
+  newListing.image = { url, filename };
+} else {
+  // TEMP fallback image
+  newListing.image = {
+    url: "https://via.placeholder.com/400",
+    filename: "default"
+  };
+}
 
     newListing.geometry = {
       type: "Point",
